@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{::main})}">
+<body>
+<main>
+    <div class="container mt-5 mb-5" th:object="${item}">
+        <div class="row">
+            <div class="col-6">
+                <img alt="" class="product-detail-image" th:src="@{|/assets/images/*{image}|}"/>
+            </div>
+
+            <div class="col-6 mt-5">
+                <div class="product-detail-title" th:text="*{name}"></div>
+                <br/>
+                <table class="table">
+                    <tbody>
+                    <tr>
+                        <td>Loại sản phẩm:</td>
+                        <td th:text="*{categories.name}"></td>
+                    </tr>
+                    <tr>
+                        <td>Giá bán:</td>
+                        <td><b th:text="*{price}"></b></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <br/>
+                <a class="btn btn-secondary" href="/">Quay lại</a>
+                <button class="btn btn-primary" th:attr="ng-click=@{|cart.add(*{id})|}">Thêm Vào Giỏ Hàng</button>
+            </div>
+        </div>
+        <div class="list-group" style="margin-top: 50px">
+            <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                Hàng Cùng Loại
+            </a>
+            <div style="display: flex">
+            <div th:each="p: *{categories.products}" class="card" style="padding: 15px 20px 20px 20px;margin: 20px 10px 30px;width: 30%;">
+
+                    <div >
+                        <a th:href="@{|/product/detail/${p.id}|}">
+                            <img th:src="@{|/assets/images/${p.image}|}" alt="" style="width: 100%;">
+                        </a>
+                    </div>
+                    <div >
+                        <h3 style="
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 5px;
+    font-weight: 400;
+    margin-top: 15px;
+    text-transform: capitalize;" th:text="${p.name}"></h3>
+                    </div>
+                    <div style="font-size: 16px;
+    display: block;
+    color: #ED1C24;
+    font-weight: bold;
+    line-height: 24px;">[[${p.price}]]₫</div>
+                    <button  class="btn btn-primary" style="margin: 20px 0;" th:attr="ng-click=@{|cart.add(${p.id})|}">Thêm Vào Giỏ Hàng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .product-detail-title {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .product-detail-image {
+            max-width: 100%;
+            max-height: 400px;
+        }
+    </style>
+</main>
+</body>
+</html>

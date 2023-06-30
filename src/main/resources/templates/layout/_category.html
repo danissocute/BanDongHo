@@ -1,0 +1,9 @@
+<div class="list-group" xmlns:th="http://www.w3.org/1999/xhtml">
+    <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+       Danh Mục
+    </a>
+    <div th:each="c:${cates}">
+        <a th:href="@{|/product/list?cid=${c.id}|}" class="list-group-item list-group-item-action" th:text="${c.name}">Category
+            1</a>
+    </div>
+</div>

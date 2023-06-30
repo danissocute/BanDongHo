@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{::main})}">
+<body>
+<main th:object="${order}">
+    <div class="card" style="margin: 20px;">
+        <div class="card-header">
+            Hóa Đơn
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                <label>Tên Người Đặt:</label>
+                <div class="form-control" th:text="*{accounts.username}"></div>
+            </div>
+            <div class="form-group">
+                <label>Ngày Đặt Hàng:</label>
+                <div class="form-control" th:text="*{createdate}"></div>
+            </div>
+            <div class="form-group">
+                <label>Địa Chỉ Nhận Hàng:</label>
+                <div class="form-control" th:text="*{address}"></div>
+            </div>
+        </div>
+    </div>
+    <div style="margin-top: 20px;">
+        <h2>Chi Tiết Hóa Đơn</h2>
+        <table class="table" style="margin: 20px 0;">
+            <thead class="thead-light">
+            <tr>
+                <th scope="col">Mã</th>
+                <th>Tên Sản Phẩm</th>
+                <th>Gía Sản Phẩm</th>
+                <th>Số Lượng</th>
+                <th>Thành Tiền</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="detail:*{orderdetails}" th:object="${detail}">
+                <td scope="row">[[*{products.id}]]</td>
+                <td>[[*{products.name}]]</td>
+                <td>[[*{#numbers.formatDecimal(price,0,'COMMA','0','POINT')}]]</td>
+                <td>[[*{quantity}]]</td>
+                <td>[[*{#numbers.formatDecimal(price*quantity,0,'COMMA','0','POINT')}]]</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+</body>
+</html>

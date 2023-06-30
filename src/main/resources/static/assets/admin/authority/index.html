@@ -1,0 +1,19 @@
+<div>
+    <div>Phân Quyền Nhân Viên</div>
+    <table >
+        <thead class="thead-light">
+        <tr>
+            <th scope="col"></th>
+            <th ng-repeat="role in roles">{{role.name}}</th>
+        </tr>
+        </thead>
+    <tbody>
+    <tr ng-repeat="acc in admins">
+        <td scope="row">{{acc.fullname}}</td>
+        <td ng-repeat="role in roles">
+            <input type="checkbox" ng-checked="authority_of(acc,role)" ng-click="authority_change(acc,role)">
+        </td>
+    </tr>
+    </tbody>
+    </table>
+</div>

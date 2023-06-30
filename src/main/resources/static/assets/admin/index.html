@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-route/1.8.3/angular-route.min.js"></script>
+</head>
+<body class="" ng-app="admin-app">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item ">
+                <a class="nav-link" href="/">Trang Chủ </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#!product">Quản Lý Sản Phẩm</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#!authorize">Phân Quyền</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/logout">Đăng Xuất</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div style="width: 80%;margin: auto">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="margin: 10px">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="/assets/images/banner1.jpg" class="d-block w-100" alt="..." style="border-radius: 10px">
+            </div>
+            <div class="carousel-item">
+                <img src="/assets/images/banner2.jpg" class="d-block w-100" alt="..." style="border-radius: 10px">
+            </div>
+            <div class="carousel-item">
+                <img src="/assets/images/banner3.jpg" class="d-block w-100" alt="..." style="border-radius: 10px">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-target="#carouselExampleIndicators" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-target="#carouselExampleIndicators" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </button>
+    </div>
+    <div ng-view=""></div>
+</div>
+<div class="footer" style="display: flex;justify-content: space-around;align-items: center;margin-top: 40px;background-color: whitesmoke;padding: 30px 0;">
+    <div class="" style="width: 40%;">
+
+        <b> Trụ sở chính: </b>
+        Công ty Cổ Phần Phúc Long Heritage - ĐKKD: 0316 871719
+        do sở KHĐT TPHCM cấp lần đầu ngày 21/05/2021
+        <br>
+        <b> Nhà máy:</b>
+
+        D_8D_CN Đường XE 1, Khu Công Nghiệp Mỹ Phước III, phường Mỹ Phước, thị xã Bến Cát, tỉnh Bình Dương,
+        Việt Nam
+        <br>
+        <b> Địa chỉ:</b>
+        42/24 - 42/26 Đường 643 Tạ Quang Bửu, phường 4, quận 8, Hồ Chí Minh
+        <br>
+        <b>Điện thoại: </b>
+        028 6263 0377 - 6263 0378
+        <br>
+        <b>Fax:</b>
+        (028) 6263 0379
+        <br>
+        <b>Email:</b>
+        sales@phuclong.masangroup.com
+        info2@phuclong.masangroup.com
+
+    </div>
+    <div style="width: 25%;">
+        <h5>Đăng ký nhận tin khuyến mãi :</h5>
+        <div style="display: flex; height: 40px;justify-content: space-between;">
+            <input class=" btn-lg" type="text" style="width: 75%;border: 1px solid #007bff;"
+                   placeholder="Nhap dia chi email">
+            <a class="btn  btn-outline-primary btn-lg" href="#" role="button">Gui</a>
+
+        </div>
+        <div style="margin-top: 20px;">
+            <p><a href="" style="transition: all 0.2s linear;color: inherit;">Chinh sach dat hang</a></p>
+            <p><a href="" style="transition: all 0.2s linear;color: inherit;">Chinh sach bao mat thong tin</a></p>
+        </div>
+    </div>
+    <div style="width: 20%;">
+        <img src="images/footer.png" alt="" style="width: 70%;">
+        <div style="margin-left: 120px;">
+            <a href=""><i class="bi bi-facebook"></i></a>
+            <a href=""> <i class="bi bi-twitter"></i></a>
+            <a href=""> <i class="bi bi-instagram"></i></a>
+            <a href=""><i class="bi bi-youtube"></i></a>
+        </div>
+    </div>
+</div>
+<div class="" style="background: black;text-align: center;">
+    <p style="color: #8d8d8d;">© 2023 Bản quyền Thanh Danh Co., Ltd</p>
+</div>
+<script src="/assets/admin/admin-app.js"></script>
+<script src="/assets/admin/product/product-ctrl.js"></script>
+<script src="/assets/admin/authority/authority-ctrl.js"></script>
+</body>
+</html>

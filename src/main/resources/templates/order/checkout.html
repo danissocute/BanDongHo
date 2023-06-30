@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml"
+      th:replace="~{/layout/index :: dynamic(~{::main})}">
+<body>
+<main>
+    <div style="margin-top: 20px">
+        <h1 style="text-transform: uppercase;
+    color: black;font-family: 'Lora';text-align: center;">Hóa Đơn Thanh Toán</h1>
+        <div th:replace="~{/cart/view :: shopping_cart}"></div>
+        <div class="card" style="margin-top: 20px">
+            <div class="card-header">
+                Hóa Đơn Đặt Hàng
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label>Tên Người Đặt: </label>
+                    <div class="form-control" sec:authentication="name" id="username"></div>
+                </div>
+                <div class="form-group">
+                    <label>Ngày Đặt Hàng: </label>
+                    <div class="form-control">{{order.createdate | date :'dd-MM-yyyy'}}</div>
+                </div>
+                <div class="form-group">
+                    <label>Địa Chỉ Nhận Hàng</label>
+                    <textarea class="form-control" ng-model="order.address"></textarea>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-primary" ng-click="order.purchase()">Đặt Hàng</button>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

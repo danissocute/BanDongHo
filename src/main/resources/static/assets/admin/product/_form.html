@@ -1,0 +1,56 @@
+<div style="display: flex;">
+    <div class="col-sm-4">
+        <img ng-src="/assets/images/{{form.image}}" style="max-width: 100%">
+    </div>
+    <div class="col-sm-8">
+        <div style="margin-top: 20px;">
+            <form>
+                <h3 style="font-weight: 700; color: black;">Thông Tin Chi Tiết Sản Phẩm</h3>
+                <div class="form-row">
+                    <div class="col">
+                        <div>Tên Sản Phẩm</div>
+                        <input type="text" class="form-control" placeholder="Name" ng-model="form.name">
+                    </div>
+                    <div class="col">
+                        <div>Gía Sản Phẩm</div>
+                        <input type="text" class="form-control" placeholder="Price" ng-model="form.price">
+                    </div>
+                </div>
+            </form>
+            <form style="margin: 10px">
+                <div class="form-row" >
+                    <div class="col">
+                        <div>Ảnh</div>
+                        <input type="file" class="form-control" ng-model="form.image"
+                               onchange="angular.element(this).scope().imageChanged(this.files)">
+                    </div>
+                    <div class="col">
+                        <div>Danh Mục</div>
+                        <select name="" id="" ng-model="form.categories.id">
+                            <option value="id" ng-repeat="c in cates" ng-value="c.id">{{c.name}}</option>
+                        </select>
+                    </div>
+                </div>
+            </form>
+            <form style="margin: 10px">
+                <div class="form-row">
+                    <div class="col">
+                        <div>Ngày Tạo</div>
+                        <input type="date" class="form-control" placeholder="Create Date" ng-model="form.createdate">
+                    </div>
+                    <div class="col">
+                        <div>Trạng Thái</div>
+                        <input type="radio" ng-model="form.available" ng-value="true">Hoạt Động
+                        <input type="radio" ng-model="form.available" ng-value="false">Ngừng Hoạt Động
+                    </div>
+                </div>
+            </form>
+            <div style="margin: 10px">
+                <button type="button" class="btn btn-primary" ng-click="create()">Thêm Mới</button>
+                <button type="button" class="btn btn-secondary" ng-click="update()">Chỉnh Sửa</button>
+                <button type="button" class="btn btn-success" ng-click="reset()">Làm Sạch</button>
+                <button type="button" class="btn btn-danger" ng-click="delete(form)">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>

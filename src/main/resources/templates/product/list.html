@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{::main})}">
+<body>
+<main >
+    <h1 style="text-transform: uppercase;
+    color: black;font-family: 'Lora';text-align: center;margin-top: 20px">Danh Sách Sản Phẩm</h1>
+    <div class="row">
+        <div th:each="p: ${items.content}" class="card" style="padding: 15px 20px 20px 20px;margin: 20px 10px 30px;width: 30%;">
+            <div >
+                <a th:href="@{|/product/detail/${p.id}|}">
+                    <img th:src="@{|/assets/images/${p.image}|}" alt="" style="width: 100%;">
+                </a>
+            </div>
+            <div >
+                <h3 style="
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 5px;
+    font-weight: 400;
+    margin-top: 15px;
+    text-transform: capitalize;" th:text="${p.name}"></h3>
+            </div>
+            <div style="font-size: 16px;
+    display: block;
+    color: #ED1C24;
+    font-weight: bold;
+    line-height: 24px;">[[${#numbers.formatDecimal(p.price, 0, 'WHITESPACE', 0, 'POINT')}]] ₫</div>
+            <button  class="btn btn-primary" style="margin: 20px 0;" th:attr="ng-click=@{|cart.add(${p.id})|}">Thêm Vào Giỏ Hàng</button>
+        </div>
+        <nav aria-label="Page navigation example" style="width: 100%;display: flex;">
+            <ul class="pagination" style="margin: auto">
+                <li class="page-item"><a class="page-link" href="/product/list?page=0">First</a></li>
+                <li class="page-item"><a class="page-link" th:href="@{|/product/list?page=${items.number - 1}|}">Prev</a></li>
+                <li class="page-item"><a class="page-link" >[[${items.number+1}]] of [[${items.totalPages}]]</a></li>
+                <li class="page-item"><a class="page-link" th:href="@{|/product/list?page=${items.number + 1}|}">Next</a></li>
+                <li class="page-item"><a class="page-link"  th:href="@{|/product/list?page=${items.totalPages-1}|}">Last</a></li>
+            </ul>
+        </nav>
+    </div>
+</main>
+</body>
+</html>

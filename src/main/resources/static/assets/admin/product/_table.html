@@ -1,0 +1,38 @@
+<table class="table">
+    <thead class="thead-light">
+    <tr>
+        <th scope="col">Mã</th>
+        <th scope="col">Tên Sản Phẩm</th>
+        <th scope="col">Gía Sản Phẩm</th>
+        <th scope="col">Ngày Tạo</th>
+        <th scope="col">Ảnh</th>
+        <th scope="col">Danh Mục</th>
+        <th scope="col">Trạng Thái</th>
+        <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="p in pager.items">
+        <td scope="row">{{p.id}}</td>
+        <td>{{p.name}}</td>
+        <td>{{p.price | number : 2}}</td>
+        <td>{{p.createdate | date: 'dd-MM-yyyy'}}</td>
+        <td>{{p.image}}</td>
+        <td>{{p.categories.name}}</td>
+        <td>{{p.available?'Yes':'No'}}</td>
+        <td>
+      <button type="button" class="btn btn-secondary"  ng-click="edit(p)">Chỉnh Sửa</button>
+<!--      <button type="button" class="btn btn-danger" ng-delete="delete(p)">Xóa</button>-->
+        </td>
+    </tr>
+    </tbody>
+</table>
+<nav aria-label="Page navigation example" style="display: flex">
+    <ul class="pagination" style="margin: auto">
+        <li class="page-item"><a class="page-link" ng-click="pager.first()">First</a></li>
+        <li class="page-item"><a class="page-link" ng-click="pager.prev()">Prev</a></li>
+        <li class="page-item"><a class="page-link" >{{pager.page+1}} of {{pager.count}}</a></li>
+        <li class="page-item"><a class="page-link" ng-click="pager.next()">Next</a></li>
+        <li class="page-item"><a class="page-link"  ng-click="pager.last()">Last</a></li>
+    </ul>
+</nav>

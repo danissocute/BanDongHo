@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{::main})}">
+<body>
+<main>
+    <div style="margin-top: 20px">
+        <h1 style="text-transform: uppercase;
+    color: black;font-family: 'Lora';text-align: center;">Shopping Cart</h1>
+        <div th:fragment="shopping_cart">
+            <table class="table" style="margin: 20px 0;">
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col">Mã</th>
+                    <th scope="col">Tên</th>
+                    <th scope="col">Gía Sản Phẩm</th>
+                    <th scope="col">Số Lượng</th>
+                    <th scope="col">Tổng Tiền</th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="item in cart.items">
+                    <td scope="row">{{item.id}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.price | number:2}} đ</td>
+                    <td><input type="number" ng-change="cart.saveToLocalStorage()" ng-model="item.qty" min="1"></td>
+                    <td>{{item.qty*item.price |number:2}} đ</td>
+                    <td>
+                        <button class="btn btn-danger" ng-click="cart.remove(item.id)">Remove</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <button class="btn btn-primary" ng-click="cart.clear()">Làm Sạch</button>
+            <a class="btn btn-info" th:href="@{/order/checkout}">Thanh Toán</a>
+        </div>
+    </div>
+</main>
+</body>
+</html>
